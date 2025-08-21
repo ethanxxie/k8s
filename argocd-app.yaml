@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: https://github.com/ethanxxie/k8s.git
     targetRevision: HEAD
-    path: templates
+    path: my-app-chart
     helm:
       # This block can be used to override values from values.yaml
       values: |
