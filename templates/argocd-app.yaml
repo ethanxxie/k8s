@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-repo/your-project.git
+    targetRevision: HEAD
+    path: my-app-chart
+    helm:
+      # This block can be used to override values from values.yaml
+      values: |
+        replicaCount: 2
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
