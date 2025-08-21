@@ -5,9 +5,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-repo/your-project.git
+    repoURL: https://github.com/ethanxxie/k8s.git
     targetRevision: HEAD
-    path: my-app-chart
+    path: templates
     helm:
       # This block can be used to override values from values.yaml
       values: |
