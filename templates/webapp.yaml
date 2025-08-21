@@ -19,9 +19,12 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: nanajanashia/k8s-demo-app:v1.0
+        # use the image respository from values.yaml
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        # same thing for pullPolicy
+        imagePullPolicy: {{ .Values.image.pullPolicy }}       
         ports:
-        - containerPort: 3000
+        - containerPort: {{ .Values.service.port }}
         env:
         - name: USER_NAME
           valueFrom:
@@ -44,11 +47,11 @@ kind: Service
 metadata:
   name: webapp-service
 spec:
-  type: NodePort
+  type: {{ .Values.service.type }}
   selector:
     app: webapp
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
-      nodePort: 30100
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+      nodePort: {{ .Values.service.nodePort }}
