@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mongo
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   # selector tells us any pod with same name under matchLabels belongs to the above Deployment
   selector:
     # pods within k8s have different names but we can give them the same label 
